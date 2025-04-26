@@ -1,2 +1,2 @@
 # titanic_survival
-This is prediction m
+This is prediction lightgbm model for the titanic dataset.
