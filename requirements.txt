@@ -6,3 +6,6 @@ matplotlib
 joblib
 seaborn
 lightgbm
+pydantic
+fastapi[standard]
+uvicorn

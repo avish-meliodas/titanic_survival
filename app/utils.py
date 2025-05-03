@@ -7,10 +7,12 @@ scaler = pickle.load(open('models/scaling.pkl', 'rb'))
 
 def preprocess_data(df):
     ## fill age with mean
-    df['Age'].fillna(mean_age, inplace=True)
+    df.fillna({'Age' : mean_age}, inplace=True)
+    # df['Age'].fillna(mean_age, inplace=True)
 
     ## fill fare with median
-    df['Fare'].fillna(median_fare, inplace=True)
+    df.fillna({'Fare': median_fare}, inplace =True)
+    # df['Fare'].fillna(median_fare, inplace=True)
 
     ## remove NULL embarked rows
     df.dropna(subset=['Embarked'], inplace=True)
