@@ -39,6 +39,26 @@ def predict_api():
 
     return jsonify(ans)
 
+@app.route('/predict', methods=['POST'])
+def predict():
+    data = [ x for x in request.form.values()]
+
+    columns = ['PassengerId', 'Pclass', 'Name', 'Sex', 'Age', 'SibSp', 'Parch',
+               'Ticket', 'Fare', 'Cabin', 'Embarked'] 
+    
+    for i in range(len(columns)):
+        if(columns[i] in ['Age', 'SibSp', 'Parch', 'Fare']):
+            data[i] = float(data[i])
+    
+    df = pd.DataFrame([data], columns=columns)
+    new_data = preprocess_data(df)
+    if(new_data.shape[0] == 0):
+        return "No DATA FOUND, maybe Embarked was empty"
+    output = lgbm_model.predict(new_data)
+    ans = float(output[0] > 0.5)
+
+    return render_template("home.html", prediction_text = f"This case is {ans} with probability : {output[0]*100}")
+
 if __name__=="__main__":
     app.run(debug=True)
 
