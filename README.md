@@ -2,7 +2,7 @@
 In this project we built a LightGBM model to predict if a passenger survives on titanic.
 The famous Titanic Dataset is used for this project.
 
-### Software and Tools
+## Software and Tools
 1. [GithubAccount]
 2. [VSCodeIDE]
 3. [GitCLI]
@@ -12,11 +12,11 @@ The famous Titanic Dataset is used for this project.
 
 Through FastAPI we will create 2 endpoints as Synchrounous and Asynchrounous APIs.
 
-### Requirements
+## Requirements
 - Python 3.9 (we will sue Python 3.13)
 - Docker
 
-### How to build and run
+## How to build and run
 - Using Docker (Recommended)
 1. **Build the Docker image**
 
@@ -25,7 +25,7 @@ docker build . -t titanic_survival
 ```
 This will build a docker image named ```titanic_survival``` , which we need to run
 
-2. ** RUN THE IMAGE **
+2. **RUN THE IMAGE**
 ```bash
 docker run -p 5000:8000 titanic_survival
 ```
@@ -60,7 +60,7 @@ uvicorn app.main:app --reload
 ```
 This should get the default port `8000` for FastAPI started.
 
-### How to use APIs
+## How to use APIs
 
 1. **POST /titanic_sync**
 Synchronous endpoint for immediate prediction.
