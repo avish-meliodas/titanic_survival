@@ -13,7 +13,7 @@ def titanic_sync(data:Passenger):
 @app.post("/titanic_async")
 def titanic_async(data: Passenger, background_tasks: BackgroundTasks):
     payload = [data.model_dump()]
-    job_id = async_predict(payload)
+    job_id = async_predict(payload, background_tasks)
     return {'job_id': job_id}
 
 @app.get("/titanic_async/{job_id}")
